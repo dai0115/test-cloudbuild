@@ -35,7 +35,7 @@ steps:
       - run
       - services
       - update-traffic
-      - pickform-api
+      - test-cloudbuild
       - --project=$PROJECT_ID
       - --region=$_REGION
       - --to-latest
