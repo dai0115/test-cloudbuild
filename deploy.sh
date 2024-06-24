@@ -13,5 +13,5 @@ gcloud run deploy $SERVICE_NAME \
   --region=$REGION \
   --image=$ARTIFACT_REPOSITORY_IMAGE_NAME:$SHORT_SHA \
   --no-use-http2 \
-  --update-secrets=MYSQL_USER=MYSQL_USER:latest
+  --update-secrets=MYSQL_USER=MYSQL_USER:latest \
   --update-secrets=MYSQL_PASSWORD=MYSQL_PASSWORD:latest
