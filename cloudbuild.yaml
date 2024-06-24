@@ -27,7 +27,6 @@ steps:
       - --region=$_REGION
       - --image=$_ARTIFACT_REPOSITORY_IMAGE_NAME:$SHORT_SHA
       - --no-use-http2
-      - --allow-unauthenticated
       - --update-secrets=MYSQL_USER=MYSQL_USER:latest
     waitFor: ["push-backend"]
   - id: traffic-to-latest
