@@ -17,17 +17,14 @@ steps:
     waitFor: ["build-backend"]
   - id: deploy-backend
     name: gcr.io/cloud-builders/gcloud
+    entrypoint: bash
     args:
-      - run
-      - deploy
+      - ./deploy.sh
       - test-cloudbuild
-      - --quiet
-      - --platform=managed
-      - --project=$PROJECT_ID
-      - --region=$_REGION
-      - --image=$_ARTIFACT_REPOSITORY_IMAGE_NAME:$SHORT_SHA
-      - --no-use-http2
-      - --update-secrets=MYSQL_USER=MYSQL_USER:latest
+      - $PROJECT_ID
+      - $_REGION
+      - $_ARTIFACT_REPOSITORY_IMAGE_NAME
+      - $SHORT_SHA
     waitFor: ["push-backend"]
   - id: traffic-to-latest
     name: gcr.io/cloud-builders/gcloud
